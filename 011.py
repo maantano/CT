@@ -90,8 +90,12 @@ def solution():
                 stack.append(num)
                 num +=1
                 answer += "+\n"
+            
+            # 자연수가 넘어가서 마지막에 한번 뺴주는것
             stack.pop()
             answer += "-\n"
+            # 자연수가 넘어가서 마지막에 한번 뺴주는것
+            
         else:
             n = stack.pop()
             if n > su:
