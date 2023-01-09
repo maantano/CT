@@ -26,13 +26,16 @@
 
 
 # 9 8
-# CCTGGATTG
+# CCTGGATT G
 # 2 0 1 1
+
+# 출력 : 0 
 
 # 4 2
 # GATA
 # 1 0 0 1
 
+# 출력 : 2
 
 
 import sys
