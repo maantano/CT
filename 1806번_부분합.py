@@ -45,7 +45,7 @@ start,end = 0,1
 
 for i in range(1,n+1):
     prefix[i] = prefix[i-1] + _list[i-1]
-
+print(prefix)
 answer = 1000001
 while start < n:
     if prefix[end] - prefix[start] >= s:
@@ -60,7 +60,6 @@ if answer == 1000001:
     print(0)
 else:
     print(answer)
-
 
 
 
