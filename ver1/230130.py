@@ -36,21 +36,99 @@
 
 
 
-# import sys
-# input = sys.stdin.readline
+import sys
+input = sys.stdin.readline
 
-# n,k = map(int,input().split())
-# arr = list(map(int,input().split()))
+n,k = map(int,input().split())
+arr = list(map(int,input().split()))
 
 
-# def quickSort(s,e,k):
-#     global a
-#     if s < e:
-#         pivot = partition(s,e)
-#         if pivot == k:
-#             return
-#         elif
+def quickSort(s,e,k):
+    global arr
+    if s < e:
+        pivot = partition(s,e)
+        if pivot == k:
+            return
+        elif k < pivot:
+            quickSort(s,pivot-1,k)
+        else:
+            quickSort(pivot+1,e,k)
 
+
+def swap(i,j):
+    global arr
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+
+def partition(s,e):
+    global arr
+
+    if s+1 == e:
+        if arr[s] > arr[e]:
+            swap(s,e)
+            return e
+    m = (s+e) //2
+
+    swap(s,m)
+    pivot = arr[s]
+    i = s+1
+    j =e
+
+    while i <= j:
+        while pivot < arr[j] and j >0:
+            j = j-1
+        while pivot > arr[i] and i < len(arr) -1:
+            i = i+1
+        if i <= j:
+            swap(i,j)
+            i = i+1
+            j = j+1
+    arr[s] = arr[i]
+    arr[j] = pivot
+    return j
+
+quickSort(0,n-1,k-1)
+print(arr[k-1])
+
+
+# def quick_sort(a):
+#     n = len(a)
+#     if n <=1:
+#         return a
+#     pivot = a[-1]
+#     g1 = []
+#     g2 =[]
+#     for i in range(0,n-1):
+#         if a[i] < pivot:
+#             g1.append(a[i])
+#         else:
+#             g2.append(a[i])
+#     return quick_sort(g1) + [pivot] + quick_sort(g2)
+
+
+# def quick_sort_sub(a,start,end):
+#     if end - start <=0:
+#         return
+#     pivot = a[end]
+#     i = start
+
+#     for j in range(start,end):
+#         if a[j] <= pivot:
+#             a[i],a[j] = a[j],a[i]
+#             i +=1
+#     a[i],a[end] = a[end],a[i]
+
+#     quick_sort_sub(a,start,i-1)
+#     quick_sort_sub(a,i+1,end)
+
+# a = [4,1,2,3,5]
+# # print(quick_sort(a))
+# print(a)
+# quick_sort_sub(a,0,len(a)-1)
+# print(a)
+# 5 2
+# 4 1 2 3 5
 # def quick(arr,pi):
 #     start = arr[0]
 #     end = arr[pi-1]
@@ -74,18 +152,3 @@
 #     quick(arr,pi)
     
 
-
-d = [6,8,3,9,10,1,2,4,7,5]
-
-def aaa(d):
-    n = len(d)
-    if n <=1:
-        return d
-    print('n====>',n)
-    mid = n //2
-    print('mid ====>',mid)
-    print(d[:mid])
-    print('----------------------------------------')
-    aaa(d[:mid])
-
-aaa(d)
