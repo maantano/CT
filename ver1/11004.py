@@ -115,8 +115,6 @@
 n = int(input())
 a = list(input())
 a_len = len(a)
-print(a)
-print(a_len)
 for i in range(n - 1):
     b = list(input())
     for j in range(a_len):
